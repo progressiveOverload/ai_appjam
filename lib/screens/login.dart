@@ -58,7 +58,7 @@ class LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       );
       // Login successful, navigate to the next screen
-      // TODO: Add navigation logic here
+    
     } catch (e) {
       // Login failed, display an error message
       showDialog(
