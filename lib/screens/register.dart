@@ -103,7 +103,7 @@ class RegisterPage extends StatelessWidget {
                             MaterialStateProperty.all(const Color(0xFF0545FA)),
                       ),
                       child: const Text(
-                        'Login',
+                        'Register',
                         style: TextStyle(color: Colors.white, fontSize: 21.0),
                       ),
                     ),
