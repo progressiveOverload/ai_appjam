@@ -1,4 +1,5 @@
 
+import 'package:ai_appjam/screens/discover.dart';
 import 'package:ai_appjam/screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -115,7 +116,9 @@ class LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const DiscoverPage());
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(const Color(0xFF0545FA)),

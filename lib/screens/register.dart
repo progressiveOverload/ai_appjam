@@ -18,9 +18,13 @@ class RegisterPage extends StatelessWidget {
               width: 200,
               height: 200,
             ),
-            const Text(
-              'A few steps',
-              style: TextStyle(fontSize: 34.0),
+            const Row(
+              children: [
+                Text(
+                  'A few steps',
+                  style: TextStyle(fontSize: 34.0),
+                ),
+              ],
             ),
             const SizedBox(height: 16.0),
             Container(
