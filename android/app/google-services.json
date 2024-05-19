@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "341116210328",
+    "project_id": "ai-appjam-880cc",
+    "storage_bucket": "ai-appjam-880cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341116210328:android:622a6bbf8ddfe1483694ed",
+        "android_client_info": {
+          "package_name": "com.example.ai_appjam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqTC-Y2WkYfTuBrTgTSltz8-iWNQDtWcg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
