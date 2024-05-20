@@ -54,6 +54,7 @@ class _FirstMainPageState extends State<FirstMainPage> {
               height: 50, // Set the height of the ListView
               child: ListView(
                 scrollDirection: Axis.horizontal,
+                itemExtent: MediaQuery.of(context).size.width / 3,
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -109,7 +110,7 @@ class _FirstMainPageState extends State<FirstMainPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Chip(
                       avatar: const Icon(Icons.nature_people),
-                      label: const Text('Calming Places'),
+                      label: const Text('Calming'),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
@@ -117,11 +118,14 @@ class _FirstMainPageState extends State<FirstMainPage> {
                   ),
                 ],
               ),
+            
             ),
-            // Other widgets go here...
+           
           ],
         ),
+
       ),
+    
     );
   }
 }

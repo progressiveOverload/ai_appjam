@@ -28,7 +28,7 @@ class DiscoverPageState extends State<DiscoverPage> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _currentPage);
-    Timer.periodic(const Duration(seconds: 5), (Timer timer) {
+    Timer.periodic(const Duration(seconds: 15), (Timer timer) {
       if (_currentPage < _images.length - 1) {
         _currentPage++;
       } else {
@@ -38,7 +38,7 @@ class DiscoverPageState extends State<DiscoverPage> {
       if (_pageController.hasClients) {
         _pageController.animateToPage(
           _currentPage,
-          duration: const Duration(milliseconds: 350),
+          duration: const Duration(milliseconds: 1050),
           curve: Curves.easeIn,
         );
       }
@@ -53,6 +53,7 @@ class DiscoverPageState extends State<DiscoverPage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isFinished = false;
     return WillPopScope(
         onWillPop: () async =>
             false, // Prevents the back button from navigating back
@@ -101,20 +102,59 @@ class DiscoverPageState extends State<DiscoverPage> {
                             const SizedBox(
                               height: 16,
                             ),
-                            SwipeableButtonView(
-                              buttonText: 'Swipe to explore now',
-                              buttonWidget: const Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                color: Colors.grey,
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.2),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.white.withOpacity(0.1),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: const Offset(0, 3),
+                                  ),
+                                ],
                               ),
-                              activeColor: Colors.transparent,
-                              onWaitingProcess: () {
-                                Get.to(() => const FirstMainPage());
-                              },
-                              onFinish: () {
-                                Get.to(() => const FirstMainPage());
-                              },
-                            )
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  
+                                  SwipeableButtonView(
+                                    buttonText: 'Swipe to explore now',
+                                    buttonWidget: const Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Colors.grey,
+                                    ),
+                                    activeColor: Colors.transparent,
+                                    isFinished: isFinished,
+                                    onWaitingProcess: () {
+                                      Future.delayed(const Duration(seconds: 2),
+                                          () {
+                                        Get.to(() => const FirstMainPage());
+                                      });
+                                    },
+                                    onFinish: () async {
+                                      Get.to(() => const FirstMainPage());
+                                      // await Navigator.push(
+                                      //     context,
+                                      //     PageTransition(
+                                      //         type: PageTransitionType.fade,
+                                      //         child: const FirstMainPage()));
+
+                                      // setState(() {
+                                      //   isFinished = false;
+                                      // });
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+          
+                            
                           ]),
                     ],
                   );

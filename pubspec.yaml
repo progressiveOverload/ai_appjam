@@ -39,6 +39,7 @@ dependencies:
   get: ^4.3.8
   firebase_core: ^2.31.0
   swipeable_button_view: ^0.0.2
+  page_transition: ^2.1.0
 
 dev_dependencies:
   flutter_test:
