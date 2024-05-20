@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 
@@ -13,8 +15,8 @@ class DiscoverPageState extends State<DiscoverPage> {
   int _currentPage = 0;
   final List<String> _images = [
     'assets/discover.png',
-    'assets/discover2.png',
-    'assets/discover3.png'
+    'assets/discover2.jpg',
+    'assets/discover3.jpg'
   ];
 
   @override
@@ -31,7 +33,7 @@ class DiscoverPageState extends State<DiscoverPage> {
       if (_pageController.hasClients) {
         _pageController.animateToPage(
           _currentPage,
-          duration: const Duration(milliseconds: 350),
+          duration: const Duration(milliseconds: 250),
           curve: Curves.easeIn,
         );
       }
@@ -46,7 +48,10 @@ class DiscoverPageState extends State<DiscoverPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () async =>
+            false, // Prevents the back button from navigating back
+        child: Scaffold(
       appBar: AppBar(),
       body: Stack(
         children: [
@@ -74,6 +79,6 @@ class DiscoverPageState extends State<DiscoverPage> {
           ),
         ],
       ),
-    );
+        ));
   }
 }
