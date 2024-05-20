@@ -29,8 +29,8 @@ class _FirstMainPageState extends State<FirstMainPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               width: 350,
@@ -47,9 +47,80 @@ class _FirstMainPageState extends State<FirstMainPage> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 16,
+            ),
+            SizedBox(
+              height: 50, // Set the height of the ListView
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Chip(
+                      avatar: const Icon(Icons.all_inclusive),
+                      label: const Text('All'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Chip(
+                      avatar: const Icon(Icons.museum),
+                      label: const Text('Museum'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Chip(
+                      avatar: const Icon(Icons.account_balance),
+                      label: const Text('Culture'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Chip(
+                      avatar: const Icon(Icons.nightlife),
+                      label: const Text('Night Life'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Chip(
+                      avatar: const Icon(Icons.fastfood),
+                      label: const Text('Food & Drink'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Chip(
+                      avatar: const Icon(Icons.nature_people),
+                      label: const Text('Calming Places'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Other widgets go here...
           ],
         ),
-        
       ),
     );
   }
