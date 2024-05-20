@@ -20,12 +20,36 @@ class _FirstMainPageState extends State<FirstMainPage> {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: () {
-                Get.to(() => ChatScreen());
+                Get.to(() => const ChatScreen());
               },
               child: Image.asset('assets/ai_icon.png'),
             ),
           ),
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 350,
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search for a location',
+                  prefixIcon: const Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                ),
+              ),
+            ),
+          ],
+        ),
+        
       ),
     );
   }
