@@ -9,7 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
-#.env
+.env
 # Ignore firebase_options.dart in lib folder
 lib/firebase_options.dart
 
