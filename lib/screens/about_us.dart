@@ -70,8 +70,9 @@ class AboutUsPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  IconButton(
-                      onPressed: () {}, icon: Image.asset("assets/gh.png")),
+               
+                  // how come asset is not found, i wonder
+                  // onPressed: () {}, icon: Image.asset("assets/gh.png")),
                   // IconButton(
                   //   icon: Image.asset('tw.png'),
                   //   onPressed: () {
