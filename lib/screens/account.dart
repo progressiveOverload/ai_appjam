@@ -1,5 +1,7 @@
+import 'package:ai_appjam/screens/about_us.dart';
 import 'package:ai_appjam/screens/calendar.dart';
 import 'package:ai_appjam/screens/favorites.dart';
+import 'package:ai_appjam/screens/help_page.dart';
 import 'package:ai_appjam/screens/language.dart';
 import 'package:ai_appjam/screens/login.dart';
 import 'package:ai_appjam/screens/my_profile.dart';
@@ -121,7 +123,9 @@ class AccountPage extends StatelessWidget {
               height: 50,
               //width: 200,
               child: ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const AboutUsPage());
+                },
                 leading: CircleAvatar(
                   radius: 30,
                   child:
@@ -141,7 +145,9 @@ class AccountPage extends StatelessWidget {
               height: 50,
               // width: 200,
               child: ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const HelpPage());
+                },
                 leading: const CircleAvatar(
                   radius: 30,
                   child: Icon(
