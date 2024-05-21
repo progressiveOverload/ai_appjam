@@ -45,7 +45,7 @@ class CalendarPage extends StatelessWidget {
                 Get.offAll(() => const FavoritePage());
                 break;
               case 4:
-                Get.offAll(() => const AccountPage());
+                  Get.offAll(() => const AccountPage());
                 break;
             }
           },
@@ -113,7 +113,7 @@ class CalendarPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: const Center(
-                      child: Text(''), // replace with your actual content
+                      child: Text('Coming Soon!'), 
                     ),
                   ),
                 );

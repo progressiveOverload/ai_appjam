@@ -1,6 +1,7 @@
 import 'package:ai_appjam/screens/calendar.dart';
 import 'package:ai_appjam/screens/favorites.dart';
 import 'package:ai_appjam/screens/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -143,7 +144,17 @@ class AccountPage extends StatelessWidget {
               //width: 200,
               child: ListTile(
                 onTap: () {
-                  Get.offAll(() => const LoginPage());
+                  Get.defaultDialog(
+                    title: 'Logout',
+                    middleText: 'Are you sure you want to logout?',
+                    textCancel: 'Cancel',
+                    textConfirm: 'Yes',
+                    onCancel: () {},
+                    onConfirm: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Get.offAll(() => const LoginPage());
+                    },
+                  );
                 },
                 leading: const CircleAvatar(
                   radius: 30,

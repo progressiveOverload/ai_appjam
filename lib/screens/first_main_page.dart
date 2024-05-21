@@ -1,6 +1,7 @@
 import 'package:ai_appjam/screens/account.dart';
 import 'package:ai_appjam/screens/calendar.dart';
 import 'package:ai_appjam/screens/chatpage.dart';
+import 'package:ai_appjam/screens/favorites.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -318,7 +319,7 @@ class _FirstMainPageState extends State<FirstMainPage> {
                 //Get.offAll(() => const ChatScreen());
                 break;
               case 3:
-                Get.offAll(() => const AccountPage());
+                Get.offAll(() => const FavoritePage());
                 break;
               case 4:
                 Get.offAll(() => const AccountPage());
