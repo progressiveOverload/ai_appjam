@@ -1,13 +1,9 @@
 import 'package:ai_appjam/screens/account.dart';
 import 'package:ai_appjam/screens/calendar.dart';
 import 'package:ai_appjam/screens/chatpage.dart';
-import 'package:ai_appjam/screens/favorites.dart';
-import 'package:ai_appjam/screens/map.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
 
 class FirstMainPage extends StatefulWidget {
   const FirstMainPage({super.key});
@@ -151,9 +147,7 @@ class _FirstMainPageState extends State<FirstMainPage> {
                   ),
                 ],
               ),
-            
             ),
-           
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -308,30 +302,26 @@ class _FirstMainPageState extends State<FirstMainPage> {
             ),
           ],
         ),
-        
-        
-
       ),
       extendBody: true,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(30.0),
+      bottomNavigationBar: SafeArea(
         child: FloatingNavbar(
           onTap: (int val) {
             switch (val) {
               case 0:
-                Get.to(const FirstMainPage());
+                Get.offAll(() => const FirstMainPage());
                 break;
               case 1:
-                Get.to(const CalendarPage());
+                Get.offAll(() => const CalendarPage());
                 break;
               case 2:
-                Get.to(const ChatScreen());
+                //Get.offAll(() => const ChatScreen());
                 break;
               case 3:
-                Get.to(const AccountPage());
+                Get.offAll(() => const AccountPage());
                 break;
               case 4:
-                Get.to(const AccountPage());
+                Get.offAll(() => const AccountPage());
                 break;
             }
           },
@@ -402,7 +392,5 @@ class _FirstMainPageState extends State<FirstMainPage> {
       //   ),
       // ),
     );
-    
-    
   }
 }

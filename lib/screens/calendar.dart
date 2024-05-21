@@ -15,25 +15,24 @@ class CalendarPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       extendBody: true,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(12.0),
+      bottomNavigationBar: SafeArea(
         child: FloatingNavbar(
           onTap: (int val) {
             switch (val) {
               case 0:
-                Get.to(const FirstMainPage());
+                Get.offAll(() => const FirstMainPage());
                 break;
               case 1:
-                Get.to(const CalendarPage());
+                Get.offAll(() => const CalendarPage());
                 break;
               case 2:
-                Get.to(const ChatScreen());
+                //Get.offAll(() => const ChatScreen());
                 break;
               case 3:
-                Get.to(const FavoritePage());
+                Get.offAll(() => const FavoritePage());
                 break;
               case 4:
-                Get.to(const AccountPage());
+                Get.offAll(() => const AccountPage());
                 break;
             }
           },

@@ -13,27 +13,29 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Profile'),
+      ),
       extendBody: true,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(12.0),
+      bottomNavigationBar: SafeArea(
         child: FloatingNavbar(
           onTap: (int val) {
             switch (val) {
               case 0:
-                Get.to(const FirstMainPage());
+                Get.offAll(() => const FirstMainPage());
                 break;
               case 1:
-                Get.to(const CalendarPage());
+                Get.offAll(() => const CalendarPage());
                 break;
               case 2:
-                Get.to(const ChatScreen());
+                //Get.offAll(() => const ChatScreen());
                 break;
               case 3:
-                Get.to(const FavoritePage());
+                Get.offAll(() => const FavoritePage());
                 break;
               case 4:
-                Get.to(const AccountPage());
+                Get.offAll(() => const AccountPage());
                 break;
             }
           },
@@ -56,6 +58,101 @@ class AccountPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Divider(),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 50,
+              // width: 200,
+              child: ListTile(
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {},
+                leading: const CircleAvatar(
+                  radius: 30,
+                  child: Icon(Icons.person),
+                ),
+                title: const Text('Profile Settings '),
+              ),
+            ),
+          ),
+          const Divider(),
+          // SizedBox(
+          //   height: 8,
+          // ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 50,
+              // width: 200,
+              child: ListTile(
+                onTap: () {},
+                trailing: const Icon(Icons.arrow_forward_ios),
+                leading: const CircleAvatar(
+                  radius: 30,
+                  child: Icon(Icons.language),
+                ),
+                title: const Text('Language'),
+              ),
+            ),
+          ),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 50,
+              //width: 200,
+              child: ListTile(
+                onTap: () {},
+                leading: const CircleAvatar(
+                  radius: 30,
+                  child: Icon(Icons.settings),
+                ),
+                title: const Text('Settings'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+              ),
+            ),
+          ),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 50,
+              // width: 200,
+              child: ListTile(
+                onTap: () {},
+                leading: const CircleAvatar(
+                  radius: 30,
+                  child: Icon(Icons.help),
+                ),
+                title: const Text('Help'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+              ),
+            ),
+          ),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 50,
+              //width: 200,
+              child: ListTile(
+                onTap: () {},
+                leading: const CircleAvatar(
+                  radius: 30,
+                  child: Icon(Icons.logout),
+                ),
+                title: const Text('Logout'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
