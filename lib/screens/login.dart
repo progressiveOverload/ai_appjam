@@ -1,8 +1,9 @@
-
 import 'package:ai_appjam/screens/discover.dart';
 import 'package:ai_appjam/screens/register.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,16 +13,37 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
+  final _auth = FirebaseAuth.instance;
   bool _isObscure = true;
   bool _rememberMe = false;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    //fucking hate this package, still getting errors
+    // _loadUserData();
+  }
+
+  // void _loadUserData() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   _emailController.text = prefs.getString('email') ?? '';
+  //   _passwordController.text = prefs.getString('password') ?? '';
+  //   _rememberMe = prefs.getBool('rememberMe') ?? false;
+  // }
+
+  // void _saveUserData() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   prefs.setString('email', _emailController.text);
+  //   prefs.setString('password', _passwordController.text);
+  //   prefs.setBool('rememberMe', _rememberMe);
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -59,7 +81,7 @@ class LoginPageState extends State<LoginPage> {
                 ),
                 cursorColor: const Color(0xFF376BFB),
               ),
-),
+            ),
             const SizedBox(height: 16.0),
             Container(
               decoration: BoxDecoration(
@@ -109,24 +131,28 @@ class LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-           
             const SizedBox(height: 16.0),
             Column(
               children: [
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(() => const DiscoverPage());
+                    onPressed: () async {
+                      try {
+                        final user = await _auth.signInWithEmailAndPassword(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        );
+                        // ignore: unnecessary_null_comparison
+                        if (user != null) {
+                          Get.offAll(
+                              const DiscoverPage()); // replace DiscoverPage with your actual discover page
+                        }
+                      } catch (e) {
+                        Get.snackbar('Error', e.toString());
+                      }
                     },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(const Color(0xFF0545FA)),
-                    ),
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white, fontSize: 21.0),
-                    ),
+                    child: const Text('Login'),
                   ),
                 ),
                 const SizedBox(height: 8.0),
@@ -153,8 +179,8 @@ class LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
+                    width: double.infinity,
+                    child: TextButton(
                       onPressed: () {
                         Get.to(() => const RegisterPage());
                       },
@@ -172,9 +198,7 @@ class LoginPageState extends State<LoginPage> {
                           ],
                         ),
                       ),
-                    )
-                  
-                ),
+                    )),
                 SizedBox(
                   width: double.infinity,
                   child: TextButton(
