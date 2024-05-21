@@ -21,10 +21,19 @@ class LanguagePageState extends State<LanguagePage> {
     setState(() {
       _selectedLanguage = value;
     });
+    String message = _selectedLanguage == 'English'
+        ? 'Language changed to English'
+        : 'Dil Türkçe olarak değiştirildi';
+
+    Locale locale = _selectedLanguage == 'English'
+        ? const Locale('en', 'US')
+        : const Locale('tr', 'TR');
+
+    Get.updateLocale(locale);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Language changed to $_selectedLanguage'),
+        content: Text(message),
         duration: const Duration(seconds: 2),
       ),
     );
