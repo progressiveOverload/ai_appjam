@@ -1,136 +1,94 @@
 import 'package:ai_appjam/screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
+
+  @override
+  RegisterPageState createState() => RegisterPageState();
+}
+
+class RegisterPageState extends State<RegisterPage> {
+  final _auth = FirebaseAuth.instance;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  bool _obscureText = true;
+
+  void _toggleObscureText() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Register'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/icon.png',
-              width: 200,
-              height: 200,
-            ),
-            const Row(
-              children: [
-                Text(
-                  'A few steps',
-                  style: TextStyle(fontSize: 34.0),
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                fillColor: Colors.white,
+                filled: true,
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: const BorderSide(color: Color(0xFF376BFB)),
                 ),
-              ],
+              ),
+              cursorColor: const Color(0xFF376BFB),
             ),
-            const SizedBox(height: 16.0),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                //  color: const Color(0xFFCCCCCC),
+            const SizedBox(height: 8),
+            TextField(
+              obscureText: _obscureText,
+              controller: _passwordController,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                fillColor: Colors.white,
+                filled: true,
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: const BorderSide(color: Color(0xFF376BFB)),
+                ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: _toggleObscureText,
+                ),
               ),
-              child: Column(
-                children: [
-                  TextField(
-                    style: const TextStyle(
-                        // color: Color(0xFF8A8A8A),
-                        ),
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      labelText: 'Name',
-                      border: InputBorder.none,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16.0),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                        borderSide: const BorderSide(color: Color(0xFF376BFB)),
-                      ),
-                    ),
-                    cursorColor: const Color(0xFF376BFB),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextField(
-                    style: const TextStyle(
-                      color: Color(0xFF8A8A8A),
-                    ),
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      labelText: 'Email',
-                      border: InputBorder.none,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16.0),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                        borderSide: const BorderSide(color: Color(0xFF376BFB)),
-                      ),
-                    ),
-                    cursorColor: const Color(0xFF376BFB),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextField(
-                    style: const TextStyle(
-                      color: Color(0xFF8A8A8A),
-                    ),
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      labelText: 'Password',
-                      border: InputBorder.none,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16.0),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                        borderSide: const BorderSide(color: Color(0xFF376BFB)),
-                      ),
-                    ),
-                    cursorColor: const Color(0xFF376BFB),
-                  ),
-                  SizedBox(
-                    width: 300,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(const Color(0xFF0545FA)),
-                      ),
-                      child: const Text(
-                        'Register',
-                        style: TextStyle(color: Colors.white, fontSize: 21.0),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                      width: double.infinity,
-                      child: TextButton(
-                        onPressed: () {
-                          Get.to(() => const LoginPage());
-                        },
-                        child: RichText(
-                          text: const TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Already have an account? ",
-                                style: TextStyle(color: Color(0xFF808080)),
-                              ),
-                              TextSpan(
-                                text: 'Login',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )),
-                ],
-              ),
+              cursorColor: const Color(0xFF376BFB),
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () async {
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  );
+                  // ignore: unnecessary_null_comparison
+                  if (newUser != null) {
+                    Get.snackbar('Success', 'Registration successful!');
+                    Get.offAll(
+                        const LoginPage()); // replace LoginPage with your actual login page
+                  }
+                } catch (e) {
+                  Get.snackbar('Error', e.toString());
+                }
+              },
+              child: const Text('Register'),
             ),
           ],
         ),
