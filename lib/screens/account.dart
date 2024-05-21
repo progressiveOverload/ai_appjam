@@ -1,5 +1,6 @@
 import 'package:ai_appjam/screens/calendar.dart';
 import 'package:ai_appjam/screens/favorites.dart';
+import 'package:ai_appjam/screens/language.dart';
 import 'package:ai_appjam/screens/login.dart';
 import 'package:ai_appjam/screens/my_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -95,7 +96,9 @@ class AccountPage extends StatelessWidget {
               height: 50,
               // width: 200,
               child: ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const LanguagePage());
+                },
                 trailing: const Icon(Icons.arrow_forward_ios),
                 leading: const CircleAvatar(
                   radius: 30,
