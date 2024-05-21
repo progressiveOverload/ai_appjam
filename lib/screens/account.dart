@@ -4,7 +4,6 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'chatpage.dart';
 import 'first_main_page.dart';
 
 class AccountPage extends StatelessWidget {

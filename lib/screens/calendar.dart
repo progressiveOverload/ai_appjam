@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'account.dart';
-import 'chatpage.dart';
 import 'first_main_page.dart';
 
 class CalendarPage extends StatelessWidget {
