@@ -72,3 +72,20 @@ class FavoritePage extends StatelessWidget {
     );
   }
 }
+
+
+class FavoritesController extends GetxController {
+  var favorites = <Map<String, dynamic>>[].obs;
+
+  void addFavorite(Map<String, dynamic> place) {
+    if (!favorites.contains(place)) {
+      favorites.add(place);
+    }
+  }
+
+  void removeFavorite(Map<String, dynamic> place) {
+    if (favorites.contains(place)) {
+      favorites.remove(place);
+    }
+  }
+}
