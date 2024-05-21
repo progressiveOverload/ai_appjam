@@ -1,6 +1,7 @@
 import 'package:ai_appjam/screens/calendar.dart';
 import 'package:ai_appjam/screens/favorites.dart';
 import 'package:ai_appjam/screens/login.dart';
+import 'package:ai_appjam/screens/my_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +74,9 @@ class AccountPage extends StatelessWidget {
               // width: 200,
               child: ListTile(
                 trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const MyProfileScreen());
+                },
                 leading: const CircleAvatar(
                   radius: 30,
                   child: Icon(Icons.person),
