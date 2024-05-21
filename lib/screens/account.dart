@@ -80,7 +80,10 @@ class AccountPage extends StatelessWidget {
                 },
                 leading: const CircleAvatar(
                   radius: 30,
-                  child: Icon(Icons.person),
+                  child: Icon(
+                    Icons.person,
+                    color: Colors.blue,
+                  ),
                 ),
                 title: const Text('Profile Settings '),
               ),
@@ -102,7 +105,10 @@ class AccountPage extends StatelessWidget {
                 trailing: const Icon(Icons.arrow_forward_ios),
                 leading: const CircleAvatar(
                   radius: 30,
-                  child: Icon(Icons.language),
+                  child: Icon(
+                    Icons.language,
+                    color: Colors.blue,
+                  ),
                 ),
                 title: const Text('Language'),
               ),
@@ -116,12 +122,15 @@ class AccountPage extends StatelessWidget {
               //width: 200,
               child: ListTile(
                 onTap: () {},
-                leading: const CircleAvatar(
+                leading: CircleAvatar(
                   radius: 30,
-                  child: Icon(Icons.settings),
+                  child:
+                      Image.asset('assets/ai_icon.png', width: 24, height: 24),
                 ),
-                title: const Text('Settings'),
-                trailing: const Icon(Icons.arrow_forward_ios),
+                title: const Text('About Us'),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                ),
               ),
             ),
           ),
@@ -135,10 +144,15 @@ class AccountPage extends StatelessWidget {
                 onTap: () {},
                 leading: const CircleAvatar(
                   radius: 30,
-                  child: Icon(Icons.help),
+                  child: Icon(
+                    Icons.help,
+                    color: Colors.blue,
+                  ),
                 ),
-                title: const Text('Help'),
-                trailing: const Icon(Icons.arrow_forward_ios),
+                title: const Text('Help Center'),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                ),
               ),
             ),
           ),
@@ -164,7 +178,10 @@ class AccountPage extends StatelessWidget {
                 },
                 leading: const CircleAvatar(
                   radius: 30,
-                  child: Icon(Icons.logout),
+                  child: Icon(
+                    Icons.logout,
+                    color: Colors.red,
+                  ),
                 ),
                 title: const Text('Logout'),
                 trailing: const Icon(Icons.arrow_forward_ios),

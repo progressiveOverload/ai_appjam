@@ -105,6 +105,7 @@ class LanguagePageState extends State<LanguagePage> {
                 groupValue: _selectedLanguage,
                 onChanged: (String? value) => _changeLanguage(value!),
               ),
+              const Divider(color: Colors.grey),
               RadioListTile<String>(
                 title: const Text('Turkish'),
                 value: 'Turkish',
