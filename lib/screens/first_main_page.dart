@@ -14,6 +14,7 @@ class FirstMainPage extends StatefulWidget {
 }
 
 class _FirstMainPageState extends State<FirstMainPage> {
+  bool isFavorite = false;
   final places = [
     {
       'image': 'assets/paris.png',
@@ -177,7 +178,7 @@ class _FirstMainPageState extends State<FirstMainPage> {
                         child: Column(
                           children: <Widget>[
                             Stack(
-                              alignment: Alignment.center,
+                              alignment: Alignment.topRight,
                               children: <Widget>[
                                 Container(
                                   height: MediaQuery.of(context).size.height *
@@ -188,10 +189,19 @@ class _FirstMainPageState extends State<FirstMainPage> {
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                  // child: const Padding(
-                                  //   padding: EdgeInsets.all(8.0),
-                                  //   child: Icon(Icons.favorite_border),
-                                  // ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: IconButton(
+                                    icon: Icon(isFavorite
+                                        ? Icons.favorite
+                                        : Icons.favorite_border),
+                                    onPressed: () {
+                                      setState(() {
+                                        isFavorite = !isFavorite;
+                                      });
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
@@ -253,7 +263,7 @@ class _FirstMainPageState extends State<FirstMainPage> {
                         child: Column(
                           children: <Widget>[
                             Stack(
-                              alignment: Alignment.center,
+                              alignment: Alignment.topRight,
                               children: <Widget>[
                                 Container(
                                   height: MediaQuery.of(context).size.height *
@@ -264,10 +274,15 @@ class _FirstMainPageState extends State<FirstMainPage> {
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                  // child: const Padding(
-                                  //   padding: EdgeInsets.all(8.0),
-                                  //   child: Icon(Icons.favorite_border),
-                                  // ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: IconButton(
+                                    icon: const Icon(Icons.favorite_border),
+                                    onPressed: () {
+                                      // Add your functionality here
+                                    },
+                                  ),
                                 ),
                               ],
                             ),

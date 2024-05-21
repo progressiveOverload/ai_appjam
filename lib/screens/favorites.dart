@@ -69,7 +69,7 @@ class FavoritePage extends StatelessWidget {
           ],
         ),
       ),
-    );
+        body: const Center(child: Text("Coming soon!")));
   }
 }
 
