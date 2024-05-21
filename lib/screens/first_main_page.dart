@@ -28,7 +28,7 @@ class _FirstMainPageState extends State<FirstMainPage> {
     },
     {
       'image': 'assets/fountain.png',
-      'name': 'Trevis Fountain',
+      'name': 'Trevi Fountain',
       'location': 'Rome, Italy',
       'rating': '4.2',
     },
