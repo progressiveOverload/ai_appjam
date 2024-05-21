@@ -144,8 +144,8 @@ class LoginPageState extends State<LoginPage> {
                         );
                         // ignore: unnecessary_null_comparison
                         if (user != null) {
-                          Get.offAll(
-                              const DiscoverPage()); // replace DiscoverPage with your actual discover page
+                          Get.offAll(() => const DiscoverPage());
+                          // replace DiscoverPage with your actual discover page
                         }
                       } catch (e) {
                         Get.snackbar('Error', e.toString());

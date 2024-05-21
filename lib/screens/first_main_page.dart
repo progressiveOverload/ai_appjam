@@ -44,6 +44,7 @@ class _FirstMainPageState extends State<FirstMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Discover interesting places'),
         actions: <Widget>[
           Padding(

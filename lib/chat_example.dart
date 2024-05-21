@@ -1,58 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+
 import 'package:google_generative_ai/google_generative_ai.dart';
 
-final String _apiKey = dotenv.get('API_KEY');
+String _apiKey = dotenv.get('API_KEY');
+
+void main() async {
+  await dotenv.load();
+  runApp(const GenerativeAISample());
+}
+
+class GenerativeAISample extends StatelessWidget {
+  const GenerativeAISample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter + Generative AI',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.dark,
+          seedColor: const Color.fromARGB(255, 171, 222, 244),
+        ),
+        useMaterial3: true,
+      ),
+      home: const ChatScreen(title: 'Flutter + Generative AI'),
+    );
+  }
+}
+
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  const ChatScreen({super.key, required this.title});
+
+  final String title;
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chat with Gemini API'),
+        title: Text(widget.title),
       ),
       body: ChatWidget(apiKey: _apiKey),
-      // body: Column(
-      //   children: <Widget>[
-      //     Expanded(
-      //       child: ListView.builder(
-      //         reverse: true,
-      //         itemCount: _messages.length,
-      //         itemBuilder: (BuildContext context, int index) {
-      //           return ListTile(
-      //             title: Text(_messages[_messages.length - index - 1]),
-      //           );
-      //         },
-      //       ),
-      //     ),
-      //     Row(
-      //       children: <Widget>[
-      //         Expanded(
-      //           child: TextField(
-      //             controller: _controller,
-      //             decoration: const InputDecoration(
-      //               hintText: 'Type a message',
-      //             ),
-      //           ),
-      //         ),
-      //         IconButton(
-      //           icon: const Icon(Icons.send),
-      //           onPressed: _sendMessage,
-      //         ),
-      //       ],
-      //     ),
-      //   ],
-      // ),
     );
   }
 }
