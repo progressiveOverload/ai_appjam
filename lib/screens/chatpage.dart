@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
+
 final String _apiKey = dotenv.get('API_KEY');
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -19,9 +20,22 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chat with Gemini API'),
+       
+        title: const Text('Discover interesting places'),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () {
+                // Get.to(() => const ChatScreen());
+              },
+              child: Image.asset('assets/ai_icon.png'),
+            ),
+          ),
+        ],
       ),
       body: ChatWidget(apiKey: _apiKey),
+    
       // body: Column(
       //   children: <Widget>[
       //     Expanded(
@@ -105,7 +119,7 @@ class _ChatWidgetState extends State<ChatWidget> {
   Widget build(BuildContext context) {
     final textFieldDecoration = InputDecoration(
       contentPadding: const EdgeInsets.all(15),
-      hintText: 'Enter a prompt...',
+      hintText: 'Enter your prompt...',
       border: OutlineInputBorder(
         borderRadius: const BorderRadius.all(
           Radius.circular(14),
