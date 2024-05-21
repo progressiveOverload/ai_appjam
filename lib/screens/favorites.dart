@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'account.dart';
+import 'chatpage.dart';
 import 'first_main_page.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -12,7 +13,20 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Discover interesting places'),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () {
+                Get.to(() => const ChatScreen());
+              },
+              child: Image.asset('assets/ai_icon.png'),
+            ),
+          ),
+        ],
+      ),
       extendBody: true,
       bottomNavigationBar: SafeArea(
         child: FloatingNavbar(

@@ -1,5 +1,6 @@
 import 'package:ai_appjam/screens/calendar.dart';
 import 'package:ai_appjam/screens/favorites.dart';
+import 'package:ai_appjam/screens/login.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -141,7 +142,9 @@ class AccountPage extends StatelessWidget {
               height: 50,
               //width: 200,
               child: ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.offAll(() => const LoginPage());
+                },
                 leading: const CircleAvatar(
                   radius: 30,
                   child: Icon(Icons.logout),
